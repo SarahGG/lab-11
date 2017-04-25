@@ -4,14 +4,14 @@ import java.util.Scanner;
 /**
  * Created by Sarah Guarino on 4/21/2017.
  */
-public class CarArrays {
+public class CarInventory {
     public static Scanner scnr = new Scanner(System.in);
     // Arrays holding new and used cars respectively
-    public static ArrayList<Cars> newCars = new ArrayList<>();
-    public static ArrayList<UsedCars> usedCars = new ArrayList<>();
+    static ArrayList<Cars> newCars = new ArrayList<>();
+    static ArrayList<UsedCars> usedCars = new ArrayList<>();
 
     // default vehicles for testing
-    public static void newCarsInSystem() {
+    static void newCarsInSystem() {
         newCars.add(new Cars());
         newCars.get(0).setVIN("23ER23E");
         newCars.get(0).setMake("Ford");
@@ -40,7 +40,7 @@ public class CarArrays {
         newCars.get(3).setYear(2005);
         newCars.get(3).setPrice(8000.00);
     }
-    public static void usedCarsInSystem() {
+    static void usedCarsInSystem() {
         usedCars.add(new UsedCars());
         usedCars.get(0).setVIN("45GH45F");
         usedCars.get(0).setMake("Ford");
@@ -65,8 +65,9 @@ public class CarArrays {
         usedCars.get(2).setPrice(13600.00);
         usedCars.get(2).setMileage(15000);
     }
+
     // array interaction methods
-    public static void removeCars(ArrayList<? extends Cars> myArray, String searchVIN) {
+    static void removeCarsByVIN(ArrayList<? extends Cars> myArray, String searchVIN) {
         for (int i = 0; i < myArray.size(); i++) {
             if (searchVIN.equals(myArray.get(i).getVIN())) {
                 Menu.titleCarRemoved();
@@ -75,7 +76,7 @@ public class CarArrays {
             }
         }
     }
-    public static void editCars(ArrayList<? extends Cars> myArray, String searchVIN) {
+    static void editCarsByVIN(ArrayList<? extends Cars> myArray, String searchVIN) {
         for (int i = 0; i < myArray.size(); i++) {
             if (searchVIN.equals(myArray.get(i).getVIN())) {
                 Menu.titleCarEdited();
@@ -88,13 +89,13 @@ public class CarArrays {
         Menu.titleCarAdded();
         System.out.println(myArray.get(myArray.size() - 1).toString());
     }
-    public static void addCars(ArrayList<? extends Cars> myArray) {
+    static void addCars(ArrayList<? extends Cars> myArray) {
         myArray.get(myArray.size() - 1).addCar();
 
         Menu.titleCarAdded();
         System.out.println(myArray.get(myArray.size() - 1).toString());
     }
-    public static void printCarByVIN(ArrayList<? extends Cars> myArray, String searchVIN) {
+    static void printCarByVIN(ArrayList<? extends Cars> myArray, String searchVIN) {
         for (Cars currentCar : myArray) {
             if (searchVIN.equals(currentCar.getVIN())) {
                 Menu.titleMatchingCar();
@@ -103,42 +104,43 @@ public class CarArrays {
         }
 
     }
-    public static void printCarByMake(ArrayList<? extends Cars> myArray, String searchMake) {
+
+    static void printCarByMake(ArrayList<? extends Cars> myArray, String searchMake) {
         for (Cars currentCar : myArray) {
             if (searchMake.equals(currentCar.getMake())) {
                 System.out.print(currentCar.toString());
             }
         }
     }
-    public static void printCarByModel(ArrayList<? extends Cars> myArray, String searchModel) {
+    void printCarByModel(ArrayList<? extends Cars> myArray, String searchModel) {
         for (Cars currentCar : myArray) {
             if (searchModel.equals(currentCar.getModel())) {
                 System.out.print(currentCar.toString());
             }
         }
     }
-    public static void printCarByYear(ArrayList<? extends Cars> myArray, int searchYear) {
+    static void printCarByYear(ArrayList<? extends Cars> myArray, int searchYear) {
         for (Cars currentCar : myArray) {
             if (searchYear == currentCar.getYear()) {
                 System.out.print(currentCar.toString());
             }
         }
     }
-    public static void printCarByPrice(ArrayList<? extends Cars> myArray, double searchPrice) {
+    static void printCarByPrice(ArrayList<? extends Cars> myArray, double searchPrice) {
         for (Cars currentCar : myArray) {
             if (searchPrice > currentCar.getPrice()) {
                 System.out.print(currentCar.toString());
             }
         }
     }
-    public static void printAllNewCars() { // FIXME: this formatting needs help
+    static void printAllNewCars() {
         System.out.println("\t\tVIN\t\t\tMAKE\t\tMODEL\t\tYEAR\tPRICE");
 
         for (Cars newCar : newCars) {
             System.out.println(newCar.toString());
         }
     }
-    public static void printAllUsedCars() { // FIXME: this formatting needs help
+    static void printAllUsedCars() {
         System.out.println("\t\tVIN\t\t\tMAKE\t\tMODEL\t\tYEAR\tPRICE");
 
         for (UsedCars usedCar : usedCars) {

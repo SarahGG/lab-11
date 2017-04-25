@@ -23,8 +23,8 @@ public class Main {
         String userString;
 
         // initializing cars that already exist
-        CarArrays.newCarsInSystem();
-        CarArrays.usedCarsInSystem();
+        CarInventory.newCarsInSystem();
+        CarInventory.usedCarsInSystem();
 
         do {
             // 0. MENU MENU
@@ -41,17 +41,17 @@ public class Main {
                 if (userNum == 1) {
                     // A. PRINT ALL CARS
                     Menu.titleNewCars();
-                    CarArrays.printAllNewCars();
+                    CarInventory.printAllNewCars();
                     Menu.titleUsedCars();
-                    CarArrays.printAllUsedCars();
+                    CarInventory.printAllUsedCars();
                 } else if (userNum == 2) {
                     // B. PRINT NEW CARS
                     Menu.titleNewCars();
-                    CarArrays.printAllNewCars();
+                    CarInventory.printAllNewCars();
                 } else if (userNum == 3) {
                     // C. PRINT USED CARS
                     Menu.titleUsedCars();
-                    CarArrays.printAllUsedCars();
+                    CarInventory.printAllUsedCars();
                 } else if (userNum == 4) {
                     // D. PRINT SPECIFIC CARS BASED ON FEATURES
                     Menu.menuSearchCars();
@@ -62,42 +62,43 @@ public class Main {
                         // I. SEARCH BY VIN
                         Menu.menuSearchVIN();
                         userString = scnr.nextLine();
-                        CarArrays.printCarByVIN(CarArrays.newCars, userString);
-                        CarArrays.printCarByVIN(CarArrays.usedCars, userString);
+                        CarInventory.printCarByVIN(CarInventory.newCars, userString);
+                        // FIXME: return Car object
+                        CarInventory.printCarByVIN(CarInventory.usedCars, userString);
                     } else if (userNum == 2) {
                         // II. SEARCH BY MAKE
                         Menu.menuSearchMake();
                         userString = scnr.nextLine();
                         Menu.titleNewCars();
-                        CarArrays.printCarByMake(CarArrays.newCars, userString);
+                        CarInventory.printCarByMake(CarInventory.newCars, userString);
                         Menu.titleUsedCars();
-                        CarArrays.printCarByMake(CarArrays.usedCars, userString);
+                        CarInventory.printCarByMake(CarInventory.usedCars, userString);
                     } else if (userNum == 3) {
                         // III. SEARCH BY MODEL
                         Menu.menuSearchModel();
                         userString = scnr.nextLine();
                         Menu.titleNewCars();
-                        CarArrays.printCarByModel(CarArrays.newCars, userString);
+                        CarInventory.printCarByModel(CarInventory.newCars, userString);
                         Menu.titleUsedCars();
-                        CarArrays.printCarByModel(CarArrays.usedCars, userString);
+                        CarInventory.printCarByModel(CarInventory.usedCars, userString);
                     } else if (userNum == 4) {
                         // IV. SEARCH BY YEAR
                         Menu.menuSearchYear();
                         userNum = scnr.nextInt();
                         scnr.nextLine();
                         Menu.titleNewCars();
-                        CarArrays.printCarByYear(CarArrays.newCars, userNum);
+                        CarInventory.printCarByYear(CarInventory.newCars, userNum);
                         Menu.titleUsedCars();
-                        CarArrays.printCarByYear(CarArrays.usedCars, userNum);
+                        CarInventory.printCarByYear(CarInventory.usedCars, userNum);
                     } else if (userNum == 5) {
                         // V. MAX PRICE
                         Menu.menuSearchPrice();
                         userDoub = scnr.nextDouble();
                         scnr.nextLine();
                         Menu.titleNewCars();
-                        CarArrays.printCarByPrice(CarArrays.newCars, userDoub);
+                        CarInventory.printCarByPrice(CarInventory.newCars, userDoub);
                         Menu.titleUsedCars();
-                        CarArrays.printCarByPrice(CarArrays.usedCars, userDoub);
+                        CarInventory.printCarByPrice(CarInventory.usedCars, userDoub);
                     }
                 }
             } else if(userNum == 2) {
@@ -108,19 +109,19 @@ public class Main {
 
                 if (userNum == 1) {
                     // A. ADD NEW CAR
-                    CarArrays.newCars.add(new Cars());
-                    CarArrays.addCars(CarArrays.newCars);
+                    CarInventory.newCars.add(new Cars());
+                    CarInventory.addCars(CarInventory.newCars);
                 } else if (userNum == 2) {
                     // B. ADD USED CAR
-                    CarArrays.newCars.add(new UsedCars());
-                    CarArrays.addCars(CarArrays.newCars);
+                    CarInventory.newCars.add(new UsedCars());
+                    CarInventory.addCars(CarInventory.newCars);
                 }
             } else if (userNum == 3) {
                 // 3. REMOVE A CAR
                 Menu.menuRemoveCars();
                 userString = scnr.nextLine();
-                CarArrays.removeCars(CarArrays.newCars, userString);
-                CarArrays.removeCars(CarArrays.usedCars, userString);
+                CarInventory.removeCars(CarInventory.newCars, userString);
+                CarInventory.removeCars(CarInventory.usedCars, userString);
             } else if (userNum == 4) {
                 // 4. EDIT A CAR
                 Menu.menuEditCars();
@@ -131,12 +132,12 @@ public class Main {
                     // A. EDIT A NEW CAR
                     Menu.menuUpdateCar();
                     userString = scnr.nextLine();
-                    CarArrays.editCars(CarArrays.newCars, userString);
+                    CarInventory.editCars(CarInventory.newCars, userString);
                 } else if (userNum == 2) {
                     // B. EDIT A USED CAR
                     Menu.menuUpdateCar();
                     userString = scnr.nextLine();
-                    CarArrays.editCars(CarArrays.usedCars, userString);
+                    CarInventory.editCars(CarInventory.usedCars, userString);
                 }
             } else if (userNum == 0) {
                 break;
